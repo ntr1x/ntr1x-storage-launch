@@ -1,0 +1,2 @@
+ALTER TABLE `tokens` DROP FOREIGN KEY FK_tokens_UserId;
+ALTER TABLE `tokens` ADD CONSTRAINT FK_tokens_UserId FOREIGN KEY (`UserId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
