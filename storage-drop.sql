@@ -11,10 +11,10 @@ ALTER TABLE sessions DROP FOREIGN KEY FK_sessions_ResourceId
 ALTER TABLE tokens DROP FOREIGN KEY FK_tokens_ResourceId
 ALTER TABLE tokens DROP FOREIGN KEY FK_tokens_UserId
 ALTER TABLE users DROP FOREIGN KEY FK_users_ResourceId
-ALTER TABLE publications DROP FOREIGN KEY FK_publications_ThumbnailId
 ALTER TABLE publications DROP FOREIGN KEY FK_publications_UserId
 ALTER TABLE publications DROP FOREIGN KEY FK_publications_ResourceId
 ALTER TABLE publications DROP FOREIGN KEY FK_publications_RelateId
+ALTER TABLE publications DROP FOREIGN KEY FK_publications_ImageId
 ALTER TABLE domains DROP FOREIGN KEY FK_domains_ResourceId
 ALTER TABLE domains DROP FOREIGN KEY FK_domains_PortalId
 ALTER TABLE portals DROP FOREIGN KEY FK_portals_UserId
@@ -22,6 +22,13 @@ ALTER TABLE portals DROP FOREIGN KEY FK_portals_ResourceId
 ALTER TABLE portals DROP FOREIGN KEY FK_portals_ThumbnailId
 ALTER TABLE templates DROP FOREIGN KEY FK_templates_PortalId
 ALTER TABLE templates DROP FOREIGN KEY FK_templates_ResourceId
+ALTER TABLE offers DROP FOREIGN KEY FK_offers_ImageId
+ALTER TABLE offers DROP FOREIGN KEY FK_offers_ResourceId
+ALTER TABLE offers DROP FOREIGN KEY FK_offers_RelateId
+ALTER TABLE offers DROP FOREIGN KEY FK_offers_UserId
+ALTER TABLE orders DROP FOREIGN KEY FK_orders_UserId
+ALTER TABLE orders DROP FOREIGN KEY FK_orders_ResourceId
+ALTER TABLE orders DROP FOREIGN KEY FK_orders_RelateId
 ALTER TABLE aspects DROP FOREIGN KEY FK_aspects_RelateId
 DROP TABLE resources
 DROP TABLE images
@@ -37,4 +44,6 @@ DROP TABLE publications
 DROP TABLE domains
 DROP TABLE portals
 DROP TABLE templates
+DROP TABLE offers
+DROP TABLE orders
 DROP TABLE aspects
