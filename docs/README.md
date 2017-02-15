@@ -1,3 +1,7 @@
+---
+layout: page
+title: Archery Storage
+---
 # About
 
 This repository contains build scripts for the _Archery Storage_. The Storage is deployed to
