@@ -4,6 +4,10 @@ ALTER TABLE params DROP FOREIGN KEY FK_params_ResourceId
 ALTER TABLE resources_images DROP FOREIGN KEY FK_resources_images_ResourceId
 ALTER TABLE resources_images DROP FOREIGN KEY FK_resources_images_RelateId
 ALTER TABLE resources_images DROP FOREIGN KEY FK_resources_images_ImageId
+ALTER TABLE resources_uploads DROP FOREIGN KEY FK_resources_uploads_ResourceId
+ALTER TABLE resources_uploads DROP FOREIGN KEY FK_resources_uploads_RelateId
+ALTER TABLE resources_uploads DROP FOREIGN KEY FK_resources_uploads_UploadId
+ALTER TABLE uploads DROP FOREIGN KEY FK_uploads_ResourceId
 ALTER TABLE grants DROP FOREIGN KEY FK_grants_ResourceId
 ALTER TABLE grants DROP FOREIGN KEY FK_grants_UserId
 ALTER TABLE sessions DROP FOREIGN KEY FK_sessions_UserId
@@ -34,6 +38,8 @@ DROP TABLE resources
 DROP TABLE images
 DROP TABLE params
 DROP TABLE resources_images
+DROP TABLE resources_uploads
+DROP TABLE uploads
 DROP INDEX INDEX_grants_UserId_Scope_Pattern_Action ON grants
 DROP TABLE grants
 DROP TABLE sessions

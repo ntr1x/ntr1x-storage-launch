@@ -2,6 +2,8 @@ CREATE TABLE resources (Id BIGINT AUTO_INCREMENT NOT NULL, DTYPE VARCHAR(31), Al
 CREATE TABLE images (ResourceId BIGINT NOT NULL, Original VARCHAR(255), Uuid LONGBLOB, PRIMARY KEY (ResourceId))
 CREATE TABLE params (ResourceId BIGINT NOT NULL, Name VARCHAR(255) NOT NULL, Type VARCHAR(255) NOT NULL, Value VARCHAR(255), RelateId BIGINT NOT NULL, PRIMARY KEY (ResourceId))
 CREATE TABLE resources_images (ResourceId BIGINT NOT NULL, ImageId BIGINT NOT NULL, RelateId BIGINT NOT NULL, PRIMARY KEY (ResourceId))
+CREATE TABLE resources_uploads (ResourceId BIGINT NOT NULL, RelateId BIGINT NOT NULL, UploadId BIGINT NOT NULL, PRIMARY KEY (ResourceId))
+CREATE TABLE uploads (ResourceId BIGINT NOT NULL, Original VARCHAR(255), Uuid LONGBLOB, PRIMARY KEY (ResourceId))
 CREATE TABLE grants (ResourceId BIGINT NOT NULL, Action VARCHAR(255), Pattern VARCHAR(255), UserId BIGINT NOT NULL, PRIMARY KEY (ResourceId))
 CREATE UNIQUE INDEX INDEX_grants_UserId_Scope_Pattern_Action ON grants (UserId, Scope, Pattern, Action)
 CREATE TABLE sessions (ResourceId BIGINT NOT NULL, Signature INTEGER, UserId BIGINT NOT NULL, PRIMARY KEY (ResourceId))
@@ -21,6 +23,10 @@ ALTER TABLE params ADD CONSTRAINT FK_params_ResourceId FOREIGN KEY (ResourceId) 
 ALTER TABLE resources_images ADD CONSTRAINT FK_resources_images_ResourceId FOREIGN KEY (ResourceId) REFERENCES resources (Id) ON DELETE CASCADE
 ALTER TABLE resources_images ADD CONSTRAINT FK_resources_images_RelateId FOREIGN KEY (RelateId) REFERENCES resources (Id)
 ALTER TABLE resources_images ADD CONSTRAINT FK_resources_images_ImageId FOREIGN KEY (ImageId) REFERENCES resources (Id)
+ALTER TABLE resources_uploads ADD CONSTRAINT FK_resources_uploads_ResourceId FOREIGN KEY (ResourceId) REFERENCES resources (Id) ON DELETE CASCADE
+ALTER TABLE resources_uploads ADD CONSTRAINT FK_resources_uploads_RelateId FOREIGN KEY (RelateId) REFERENCES resources (Id)
+ALTER TABLE resources_uploads ADD CONSTRAINT FK_resources_uploads_UploadId FOREIGN KEY (UploadId) REFERENCES resources (Id)
+ALTER TABLE uploads ADD CONSTRAINT FK_uploads_ResourceId FOREIGN KEY (ResourceId) REFERENCES resources (Id) ON DELETE CASCADE
 ALTER TABLE grants ADD CONSTRAINT FK_grants_ResourceId FOREIGN KEY (ResourceId) REFERENCES resources (Id) ON DELETE CASCADE
 ALTER TABLE grants ADD CONSTRAINT FK_grants_UserId FOREIGN KEY (UserId) REFERENCES resources (Id)
 ALTER TABLE sessions ADD CONSTRAINT FK_sessions_UserId FOREIGN KEY (UserId) REFERENCES resources (Id)
