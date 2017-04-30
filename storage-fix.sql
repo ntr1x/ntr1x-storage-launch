@@ -10,6 +10,9 @@ ALTER TABLE `domains` ADD CONSTRAINT `FK_domains_PortalId` FOREIGN KEY (`PortalI
 ALTER TABLE `templates` DROP FOREIGN KEY `FK_templates_PortalId`;
 ALTER TABLE `templates` ADD CONSTRAINT `FK_templates_PortalId` FOREIGN KEY (`PortalId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
 
+ALTER TABLE `stores` DROP FOREIGN KEY `FK_stores_PortalId`;
+ALTER TABLE `stores` ADD CONSTRAINT `FK_stores_PortalId` FOREIGN KEY (`PortalId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
+
 ALTER TABLE `grants` DROP FOREIGN KEY `FK_grants_UserId`;
 ALTER TABLE `grants` ADD CONSTRAINT `FK_grants_UserId` FOREIGN KEY (`UserId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
 
@@ -22,11 +25,20 @@ ALTER TABLE `offers` ADD CONSTRAINT `FK_offers_RelateId` FOREIGN KEY (`RelateId`
 ALTER TABLE `offers` DROP FOREIGN KEY `FK_offers_ImageId`;
 ALTER TABLE `offers` ADD CONSTRAINT `FK_offers_ImageId` FOREIGN KEY (`ImageId`) REFERENCES `resources` (`Id`) ON DELETE SET NULL;
 
+ALTER TABLE `prices` DROP FOREIGN KEY `FK_prices_UserId`;
+ALTER TABLE `prices` ADD CONSTRAINT `FK_prices_UserId` FOREIGN KEY (`UserId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
+
+ALTER TABLE `prices` DROP FOREIGN KEY `FK_prices_RelateId`;
+ALTER TABLE `prices` ADD CONSTRAINT `FK_prices_RelateId` FOREIGN KEY (`RelateId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
+
 ALTER TABLE `orders` DROP FOREIGN KEY `FK_orders_UserId`;
 ALTER TABLE `orders` ADD CONSTRAINT `FK_orders_UserId` FOREIGN KEY (`UserId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
 
 ALTER TABLE `orders` DROP FOREIGN KEY `FK_orders_RelateId`;
 ALTER TABLE `orders` ADD CONSTRAINT `FK_orders_RelateId` FOREIGN KEY (`RelateId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
+
+ALTER TABLE `orders` DROP FOREIGN KEY `FK_orders_StoreId`;
+ALTER TABLE `orders` ADD CONSTRAINT `FK_orders_StoreId` FOREIGN KEY (`StoreId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
 
 ALTER TABLE `params` DROP FOREIGN KEY `FK_params_RelateId`;
 ALTER TABLE `params` ADD CONSTRAINT `FK_params_RelateId` FOREIGN KEY (`RelateId`) REFERENCES `resources` (`Id`) ON DELETE CASCADE;
